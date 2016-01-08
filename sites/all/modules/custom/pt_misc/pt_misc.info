@@ -1,0 +1,20 @@
+name = PT Misc Module
+description = A custom module containing various functionality for the Pikeville Tourism Site.
+package = "Pikeville Tourism"
+scripts[] = /scripts/ao_iframe.js
+scripts[] = /scripts/video_gallery.js
+scripts[] = /scripts/plugin.js
+stylesheets[all][] = /style/video_gallery.css
+stylesheets[all][] = /style/attractionNode.css
+stylesheets[all][] = /style/packageNode.css
+
+
+
+
+; Information added by Drupal.org packaging script on 2015-03-11
+version = "7.x-1.x"
+core = "7.x"
+project = "pt_misc"
+datestamp = "1426097283"
+
+

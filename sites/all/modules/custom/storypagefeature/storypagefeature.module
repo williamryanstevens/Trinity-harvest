@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the StoryPageFeature feature.
+ */
+
+include_once 'storypagefeature.features.inc';

@@ -1,0 +1,114 @@
+<?php
+/**
+ * @file
+ * Module file for powr_countdown_timer.
+ */
+
+/**
+ * @defgroup powr_countdown_timer
+ * @ingroup powr
+ * @{
+ * Adds POWr Countdown Timer block, and implements POWr.js.
+ */
+
+/**
+ * Add powr js.
+ */
+function powr_countdown_timer_page_build(&$page) {
+  global $_powr_js_added;
+  // If already added do nothing.
+  if ($_powr_js_added == TRUE) {
+    return;
+  }
+  $js_url = '/';
+  $js_url .= '/www.powr.io/powr.js';
+  $powr_token = 'drupal_'.sha1(sha1(drupal_get_private_key() . drupal_get_hash_salt() ));
+  $js_url .= '?powr-token='.$powr_token.'&external-type=drupal';
+  // Write js.
+  drupal_add_js($js_url, 'external');
+  // Set global flag.
+  $_powr_js_added = TRUE;
+}
+/**
+ * Help Page.
+ */
+function powr_countdown_timer_help($path, $arg) {
+  if ($path == 'admin/help#powr_countdown_timer') {
+    $text  = '<h1>' . t('Add POWr Countdown Timer to your site and edit right in the page.') . '</h1>';
+    $text .= '<br />';
+    $text .= '<h1>' . t('<a target="_blank" href="@tute-url">Full tutorial here.</a>', array('@tute-url' => 'http://www.powr.io/tutorials/how-to-add-countdown-timer-plugin-to-your-drupal-site')) . '</h1>';
+    $text .= '<br />';
+    $text .= '<h1>' . t('How to install:') . '</h1>';
+    $text .= '<ol>';
+    $text .= '<li>';
+    $text .= t('Enable the POWr Countdown Timer Module.');
+    $text .= '<i>' . t('Note: you may need to clear your caches after installing: Configuration->Development->Clear All Caches.') . '</i>';
+    $text .= '</li><li>';
+    $text .= '<strong>' . t('To use as a block:') . '</strong>';
+    $text .= t('visit %structure -> %blocks and drag the %POWr to your desired block.', array(
+                '%structure' => t('Structure'),
+                '%POWr' => 'POWr Countdown Timer',
+                '%blocks' => t('Blocks'),
+                ));
+    $text .= '</li><li>';
+    $text .= "<b>" . t('To use within ANY post, article, or other content:') . "</b> " . t('simply write the token/shortcode in any text:') . "<b>[<i></i>powr-countdown-timer label=" . '"' . "Enter a Label" . '"' . "]</b>. " . t('You also have instant access to all other POWr plugins, full list at') . " <a href='http://www.powr.io' target='_blank'>POWr.io</a>";
+    $text .= '</li><li>';
+    $text .= t('View your site and your Countdown Timer will appear right in the page. Click the gears icon and you can customize right in the page.');
+    $text .= '</li>';
+    $text .= '</ol>';
+    $text .= '<br />';
+    $text .= '<h1>' . t('Examples') . ':</h1>';
+    $text .= '<img src="https://s3-us-west-1.amazonaws.com/powr/plugins/countdownTimer/screenshot-1.jpg" style="height:300px;" />';
+    $text .= '<img src="https://s3-us-west-1.amazonaws.com/powr/plugins/countdownTimer/screenshot-2.jpg" style="height:300px;" />';
+    $text .= '<img src="https://s3-us-west-1.amazonaws.com/powr/plugins/countdownTimer/screenshot-3.jpg" style="height:300px;" />';
+    return $text;
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function powr_countdown_timer_block_info() {
+  // Many options are defined in hook_block_info():
+  $blocks['powr_countdown_timer'] = array(
+    // Info: The name of the block.
+    // This text appears to the admin on the structure / blocks page.
+    'info' => t('POWr Countdown Timer'),
+    // Block caching options (per role, per user, etc.).
+    // DRUPAL_CACHE_PER_ROLE is the default.
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function powr_countdown_timer_block_configure($delta = '') {
+  $form = array();
+  // THIS IS THE CONTENTS IN THE CONFIGURATION PANEL.
+  if ($delta == 'powr_countdown_timer') {
+    $form['powr_countdown_timer_string'] = array(
+      '#type' => 'item',
+      '#title' => '',
+      '#markup' => '<h1>' . t('Customize POWr Countdown Timer right in the page:') . '</h1>' . t('Just view your page to see the POWr Countdown Timer plugin.  Click the settings icon to open the POWr Editor.'),
+    );
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function powr_countdown_timer_block_view_alter(&$data, $block) {
+  if ($block->delta == 'powr_countdown_timer') {
+    // This is the block id.
+    $block_id = $block->bid;
+    // Actually write the content here:
+    $data['content'] = "<div class='powr-countdown-timer' label='Drupal_$block_id'></div>";
+  }
+}
+
+/**
+ * @} End of "defgroup powr_countdown_timer".
+ */

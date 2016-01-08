@@ -1,0 +1,430 @@
+/* line 1, ../sass/style.scss */
+.thc-staff-wrapper {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 320px;
+  height: 436px;
+  background-color: black;
+}
+
+/* line 10, ../sass/style.scss */
+.pt-staff-image {
+  height: 240px;
+}
+
+/* line 14, ../sass/style.scss */
+.thc-staff-image img {
+  height: 23em;
+}
+
+/* line 18, ../sass/style.scss */
+div#thc-staff-page {
+  padding-bottom: 24px;
+}
+
+/* line 22, ../sass/style.scss */
+.thc-staff-name.text-center {
+  margin-top: 1em;
+}
+
+/* line 26, ../sass/style.scss */
+.thc-ministry-wrapper {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 320px;
+  height: 436px;
+  background-color: #e6e7e8;
+}
+
+/* line 35, ../sass/style.scss */
+.thc-ministry-image img {
+  height: 32em;
+  width: 100%;
+}
+
+/* line 40, ../sass/style.scss */
+.thc-ministry-wrapper {
+  width: 100%;
+  margin-bottom: 15em;
+}
+
+/* line 45, ../sass/style.scss */
+.thc-staff-Email p {
+  font-family: monospace;
+  color: white;
+  font-size: 13px;
+}
+
+/* line 51, ../sass/style.scss */
+.thc-staff-name p {
+  font-family: monospace;
+  color: white;
+  font-size: 16px;
+}
+
+/* line 57, ../sass/style.scss */
+.thc-staff-position p {
+  font-family: monospace;
+  color: white;
+  font-size: 16px;
+}
+
+/* line 63, ../sass/style.scss */
+.thc-staff-phone p {
+  font-family: monospace;
+  color: white;
+  font-size: 16px;
+}
+
+@media (max-width: 319px) {
+  /* line 69, ../sass/style.scss */
+  .thc-staff-organism {
+    backxCground-color: #e6e7e8;
+    padding-bottom: 10px;
+  }
+
+  /* line 74, ../sass/style.scss */
+  .thc-staff-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* line 79, ../sass/style.scss */
+  .pt-staff-image {
+    height: 100%;
+  }
+}
+/* line 84, ../sass/style.scss */
+.thc-ministry-name {
+  font-size: 5vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  background: black;
+  color: white;
+}
+
+/* line 91, ../sass/style.scss */
+.thc-ministry-position {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  background: black;
+  color: white;
+}
+
+/* line 98, ../sass/style.scss */
+.thc-ministry-Email {
+  font-size: 3vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  background: black;
+  color: white;
+}
+
+/* line 105, ../sass/style.scss */
+.thc-contact-us-image img {
+  width: 100%;
+  margin-top: -8em;
+}
+
+/* line 110, ../sass/style.scss */
+.thc-contact-us-city.text-center p {
+  margin-top: -2em;
+}
+
+/* line 114, ../sass/style.scss */
+.thc-contact-us-name p {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: 2em;
+}
+
+/* line 120, ../sass/style.scss */
+.opening-statement p {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 26px;
+  margin-top: -8em;
+}
+
+/* line 126, ../sass/style.scss */
+.thc-contact-us-position p {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: -1em;
+}
+
+/* line 132, ../sass/style.scss */
+.thc-contact-us-city p {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: -1em !important;
+}
+
+/* line 138, ../sass/style.scss */
+.thc-contact-us-email p {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: -1em !important;
+}
+
+/* line 143, ../sass/style.scss */
+.thc-contact-us-facebook {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: -0em !important;
+}
+
+/* line 149, ../sass/style.scss */
+.thc-contact-us-twitter {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: -2em !important;
+}
+
+/* line 155, ../sass/style.scss */
+.thc-contact-us-phone p {
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+  margin-top: -1em !important;
+}
+
+/* line 161, ../sass/style.scss */
+.footer {
+  background: black;
+  color: white;
+  padding-top: 1em;
+}
+
+/* line 167, ../sass/style.scss */
+.nav {
+  position: relative;
+  top: 34px;
+  font-size: 3vmin;
+  left: 127px;
+}
+
+/* line 174, ../sass/style.scss */
+.navbar-header img {
+  width: 8em;
+  height: 6em;
+  bottom: 10px;
+}
+
+/* line 180, ../sass/style.scss */
+.page-header {
+  border-bottom: 0em;
+}
+
+/* line 184, ../sass/style.scss */
+article#node-20 {
+  display: none;
+}
+
+/* line 189, ../sass/style.scss */
+.region.region-sidebar-second {
+  margin-top: 19px;
+}
+
+/* line 193, ../sass/style.scss */
+.thc-series-name p {
+  margin-bottom: 0;
+  position: relative;
+  left: 15em;
+  font-size: 4vmin;
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+/* line 201, ../sass/style.scss */
+.well {
+  min-height: 20px;
+  padding: 0px;
+  margin-bottom: 20px;
+  background-color: white !important;
+  border: 0px !important;
+  border-radius: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* line 212, ../sass/style.scss */
+.thc-series-image img {
+  position: relative;
+  left: 39px;
+}
+
+/* line 217, ../sass/style.scss */
+div#thc-ministry-page {
+  padding-bottom: 55px;
+}
+
+/* line 221, ../sass/style.scss */
+h2.pane-title {
+  display: none;
+}
+
+/* line 225, ../sass/style.scss */
+.thumbnail {
+  border: none;
+  padding-top: 100px;
+}
+
+/* line 230, ../sass/style.scss */
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+/* line 235, ../sass/style.scss */
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+  position: relative;
+  top: 24px;
+}
+
+/* line 241, ../sass/style.scss */
+div#thc-history-page {
+  margin-bottom: 5em;
+}
+
+/* line 244, ../sass/style.scss */
+div#thc-history-page p {
+  margin-bottom: 5em;
+  font-family: monospace;
+}
+
+/* line 249, ../sass/style.scss */
+.thc-history-page-image-2 img {
+  border-radius: 14%;
+}
+
+/* line 253, ../sass/style.scss */
+.thc-history-page-image-3 img {
+  border-radius: 14%;
+}
+
+/* line 257, ../sass/style.scss */
+.thc-history-page-image-1 img {
+  border-radius: 35%;
+}
+
+/* line 261, ../sass/style.scss */
+.thc-history-page-image-4 img {
+  border-radius: 14%;
+}
+
+/* line 265, ../sass/style.scss */
+.thc-history-page-image-5 img {
+  border-radius: 14%;
+}
+
+/* line 269, ../sass/style.scss */
+.banner-image.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+  background-color: darkcyan;
+  margin-bottom: 6em;
+  margin-top: 8em;
+}
+
+/* line 275, ../sass/style.scss */
+.banner-image.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+  text-align: center;
+}
+
+/* line 279, ../sass/style.scss */
+.view-header {
+  line-height: 8.428571;
+}
+
+/* line 283, ../sass/style.scss */
+.calendar-calendar table.mini td.empty {
+  background: #fff;
+  border-color: none;
+}
+
+/* line 289, ../sass/style.scss */
+td#calendar {
+  position: relative;
+  top: -3em;
+}
+
+/* line 294, ../sass/style.scss */
+header#page-header {
+  margin-top: 0.8em !important;
+}
+
+/* line 298, ../sass/style.scss */
+h2.block-title {
+  font-size: 30px;
+  border-style: solid;
+  border-left: black;
+  border-right: black;
+  border-top: black;
+}
+
+/* line 306, ../sass/style.scss */
+.calendar-empty {
+  line-height: 143px !important;
+}
+
+/* line 310, ../sass/style.scss */
+.calendar-calendar td.has-no-events {
+  border-style: black;
+  border-style: inset;
+}
+
+/* line 315, ../sass/style.scss */
+.calendar-calendar .mini {
+  border: ridge;
+}
+
+/* line 319, ../sass/style.scss */
+.view .date-nav-wrapper .date-prev {
+  -moz-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  background: none !important;
+  float: none;
+  padding: 5px 0;
+  position: absolute;
+  right: 86px;
+  left: auto;
+  text-align: right;
+  top: 3px;
+  width: auto;
+  z-index: 1;
+  font-size: 12px;
+}
+
+/* line 335, ../sass/style.scss */
+.view .date-nav-wrapper .date-prev a, .view .date-nav-wrapper .date-next a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 7px;
+}
+
+/* line 341, ../sass/style.scss */
+.view .date-nav-wrapper .date-next {
+  -moz-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  background: none !important;
+  float: none;
+  padding: 5px 0;
+  position: absolute;
+  right: 15px;
+  left: auto;
+  text-align: right;
+  top: 3px;
+  width: auto;
+  z-index: 1;
+  font-size: 12px;
+}
+
+/* line 357, ../sass/style.scss */
+.calendar-calendar .month-view .full tr.single-day .no-entry, .calendar-calendar .month-view .full tr.single-day .no-entry .inner {
+  height: 163px !important;
+  line-height: 44px;
+}
+
+/* line 364, ../sass/style.scss */
+img.Image.img-responsive.img__fid__42.img__view_mode__media_original.media-image {
+  display: block;
+  height: auto;
+  width: 100% !important;
+}

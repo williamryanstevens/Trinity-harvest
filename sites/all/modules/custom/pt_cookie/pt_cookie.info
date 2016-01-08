@@ -1,0 +1,4 @@
+name = PT Cookie Preprocess Module
+description = A custom module that sets an initial user cookie for the Pikeville Tourism Site.
+package = "Pikeville Tourism"
+core = 7.x

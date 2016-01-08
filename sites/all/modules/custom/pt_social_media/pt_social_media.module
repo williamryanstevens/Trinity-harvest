@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Misc. module for Pikeville Tourism.
+ */
+
+
+module_load_include('inc', 'pt_misc', 'pt_misc.social_media');
+
+
+/*
+ * Implements hook_theme_registry_alter.  
+ * This hook will be used to reference our custom template pages. 
+ *
+ */
+
+// include('templates/bean--twitter-search.tpl.php'); 
+
+function pt_social_media_theme($existing, $type, $theme, $path) {
+  return array (
+    'page__block__twitter_search' => array (
+      'variables' => array(),
+      'template' => 'templates/page--block--twitter-search' ,
+      'base hook' => 'page',
+      'path' => drupal_get_path('module', 'pt_misc'),
+    ),
+  );
+}
+
+function pt_social_media_preprocess_page(&$vars, $hook) 
+{
+    global $user, $is_mobile;
+    if (isset($vars['node'])) 
+    {
+      // If the node type is "blog" the template suggestion will be "page--blog.tpl.php".
+      // $vars['theme_hook_suggestions'][] = 'page__block__twitter_search';    
+    }
+    // dsm($vars);
+}
+
+// function pt_misc_theme_registry_alter(&$theme_registry) {
+// 				// Defined path to the current module.
+// 	$module_path = drupal_get_path('module', 'pt_misc');
+// 				// Find all .tpl.php files in this module's folder recursively.
+// 	$template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+// 				// Iterate through all found template file objects.
+// 	foreach ($template_file_objects as $key => $template_file_object) {
+// 				// If the template has not already been overridden by a theme.
+// 		if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])){
+// 				// Alter the theme path and template elements.
+// 			$theme_registry[$key]['theme path'] = $module_path;
+// 			$theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+// 			$theme_registry[$key]['type'] = 'module';
+// 	    }
+//     }
+// }

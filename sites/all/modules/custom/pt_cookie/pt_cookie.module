@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Sets initial user cookie.
+ */
+
+function pt_cookie_preprocess_page(&$vars, $hook){
+  if (!isset ($_COOKIE['Drupal_visitor_segmentation'])) {
+    //$cookie_domain=variable_get('cookie_domain');
+    //setcookie('cookieadventure', '2', time()+3600, $cookie_domain); 
+    user_cookie_save(array('segmentation'=>'2'));
+  }
+}
+
+function pt_cookie_menu(){
+	$items['cookie/%'] = array(
+    'title' => 'Cookie Setter',
+    'page callback' => 'pt_cookie_setter_redirect',
+    'access callback' => TRUE,
+    'expanded' => TRUE,
+    'page arguments' => array(1),
+  );
+	return $items;
+}
+
+function pt_cookie_setter_redirect($cookie_value){
+  $path = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH);
+  $q = parse_url ($_SERVER['HTTP_REFERER'], PHP_URL_QUERY);
+  $redirect = $path;
+  if(is_numeric($cookie_value) && $cookie_value <= 4 && $cookie_value > 0){
+    user_cookie_save(array('segmentation'=>$cookie_value));
+  }
+
+  if(!empty($q)){
+    parse_str($q);
+    $redirect = $destination;
+  }
+
+	drupal_goto($redirect);
+}
+

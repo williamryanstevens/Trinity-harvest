@@ -1,0 +1,4 @@
+name = Calendar Download
+description = A custom module that allows visitors to the Pikeville Tourism site to download events to their calendars.
+core = 7.x
+package = "Pikeville Tourism"

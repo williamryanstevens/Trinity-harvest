@@ -1,0 +1,4 @@
+name = POWr Countdown Timer
+description = Count down to any time and date.
+package = POWr Modules
+core = 7.x

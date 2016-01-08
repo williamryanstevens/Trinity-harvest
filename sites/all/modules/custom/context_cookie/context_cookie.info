@@ -1,0 +1,4 @@
+name = Context Cookie Extension
+description = This module exposes a cookie value to context.
+core = 7.x
+package = Theme Switching

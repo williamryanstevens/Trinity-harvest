@@ -1,0 +1,176 @@
+#block-bean-main-street h2{
+	display:none;
+}
+.pt-attraction-clear-menu{
+	margin-top: 0em !important;
+}
+.pt-attraction-clear-menu-mainstreet{
+	margin-top: 0em !important;
+}
+#page-header{
+	margin-top: 11.8em !important;
+	}
+.page-header{
+	display: none;
+}
+.TopTitleField{
+	font-weight: bold;
+}
+.material-icons {
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 44px !important;
+	color: black;
+}
+.material-icons:hover{
+	color:#38add9;
+}
+.attractions-displayNone{
+	display:none !important;
+}
+.pt-attraction-navigation-icon{
+	float:right !important;
+}
+.attraction_lower_block{
+	margin-bottom: 4em;
+	font-size: 12pt;
+	font-family: "Roboto "
+}
+.pt-attraction-card-image{
+		padding-top: 0px !important;
+		padding-bottom: 2em;
+	}
+.attractions-image-video{
+	margin: 0px 32px 32px 32px;
+}
+.attraction-navigation-icons{
+	float:right !important;
+}
+
+.attraction-glyph-size{
+	font-size: x-large !important;
+	color: #000000;
+}
+.attraction-lower-text-section{
+	background-color: white !important;
+}
+.pt-no-padding{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+.attraction-subpage-image-gallery{
+	float:left;
+	margin-right: .5em;
+	margin-left: .5em;
+	margin-top: 1.5em;
+	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.25);
+}
+.pt-outside-video-card{
+	padding-left: 0em !important;
+	padding-right: 0em !important;
+}
+.videoPlayer{
+	max-width: 100%;
+}
+.videocard{
+	margin-top: 2em;
+}
+.attraction-main-top-margin{
+	margin-top: 11.8em !important;
+	}
+@media (max-width: 768px) {
+	.pt-attraction-card-image{
+		margin: 5px;
+	}
+	.pt-attraction-card-paragraph-title h2{
+		font-size: 18px;
+	}
+	
+	.pt-attraction-social-media {
+		width:40%;
+		padding: 0px !important;
+		float:left;
+	}
+	.pt-navigation-icons{
+		width: 50%;
+		padding: 0px !important;
+		float:left;
+	}
+	.pt-attraction-button{
+		float:none !important;
+		display: table !important;
+		margin: 0 auto !important;
+	}
+	.attraction-subpage-image-gallery img{
+		width: 178px;
+	}
+	.attractions-image-video{
+		margin:3px;
+	}
+	.pt-lower-text-section{
+		background-color: #eeeeee !important;
+	}
+	.attraction-navigation-icons{
+	float:left !important;
+	}
+	.pt-attraction-card-image{
+	margin-top: 0em !important;
+	}
+	#page-header{
+	margin-top: 0em !important;
+	}
+	.attraction-navigation-center-row{
+	margin-left: 39%;
+	}
+	
+}
+@media (max-width: 628px) {
+	.pt-time-location{
+			display:none;
+		}
+	.attraction-navigation-center-row{
+	margin-left: 25%;
+	}
+	.attraction-social-media-icons{
+		float:right;
+	}
+}
+	
+	/*this is all for the headers on the ipad mini protrait view.*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 1){
+	.inner-row-container{
+		margin-top: 160px !important;
+	}
+
+	.pt-event-main-page{
+		margin-top: 142px;
+	}
+
+	.searchbar-inner-div{
+		margin-top: 155px;
+	}
+
+	.pt-event-subpage-shift-card-below{
+		margin-top: 163px;
+	}
+
+	.attraction-main-top-margin{
+		margin-top: 163px !important;
+	}
+
+	#block-bean-main-street{
+		margin-top: 163px;
+	}
+
+	#block-bean-about-us-jumbotron{
+		margin-top: 163px;
+	}
+
+	.pt-image-with-text-bean{
+		margin-top: 161px;
+	}
+
+	#block-bean-who-we-are-jumbotron{
+		margin-top: 163px;
+	}
+}

@@ -1,0 +1,10 @@
+name = PT Parallax Storypage Module
+description = A custom module to create a parallaxing effect for the story pages for the Pikeville Tourism Site.
+package = "Pikeville Tourism"
+
+; Information added by Drupal.org packaging script on 2015-03-11
+version = "7.x-1.x"
+core = "7.x"
+project = "pt_parallax"
+datestamp = "1426097283"
+

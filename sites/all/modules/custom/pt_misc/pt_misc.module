@@ -1,0 +1,279 @@
+<?php
+/**
+ * @file
+ * Misc. module for Pikeville Tourism.
+ */
+
+
+//module_load_include('inc', 'cmms', 'forms');
+
+/*
+ *
+ * Implements hook_theme
+ *
+ */
+
+function pt_misc_map_cookie() {
+
+  $array = array (
+    "0" => "1",
+    "1" => "2",
+    "2" => "3",
+    "3" => "4",
+  );
+
+  if (isset ($_COOKIE['Drupal_visitor_segmentation'])) {
+    foreach ($array as $index => $cookievalue){
+      if ($_COOKIE['Drupal_visitor_segmentation'] == $cookievalue) {
+        return $index;
+      }
+    }
+
+  }
+
+  return $index;
+}
+
+function pt_misc_theme($existing, $type, $theme, $path) {
+  return array (
+    'page__package' => array (
+      'variables' => array(),
+      'template' => 'page--package' ,
+      'base hook' => 'page',
+      'path' => drupal_get_path('module', 'pt_misc').'/templates',
+    ),
+    'page__event' => array (
+      'variables' => array(),
+      'template' => 'page--event' ,
+      'base hook' => 'page',
+      'path' => drupal_get_path('module', 'pt_misc').'/templates',
+    ),
+    'page__site_within_a_site' => array (
+      'variables' => array(),
+      'template' => 'page--site-within-a-site' ,
+      'base hook' => 'page',
+      'path' => drupal_get_path('module', 'pt_misc').'/templates',
+    ),
+    'page__attraction' => array (
+      'variables' => array(),
+      'template' => 'page--attraction' ,
+      'base hook' => 'page',
+      'path' => drupal_get_path('module', 'pt_misc').'/templates',
+    ),
+    'views_view_fields__events' => array (
+      'variables' => array(),
+      'template' => 'views-view-fields--events' ,
+      'base hook' => 'view',
+      'path' => drupal_get_path('module', 'pt_misc').'/templates',
+    ),
+  );
+}
+
+/*
+ *
+ * Implements hook_preprocess_page
+ *
+ */
+function pt_misc_preprocess_page(&$vars, $hook){
+    global $user, $is_mobile;
+    if (isset($vars['node'])){
+      if ($vars['node']->type == 'package' && arg(2) != 'edit'){
+        if (arg(2) != 'delete'){
+      $vars['theme_hook_suggestions'][] = 'page__package';
+        } 
+      }   
+    }
+     if (isset($vars['node'])){
+      if ($vars['node']->type == 'event' && arg(2) != 'edit'){
+        if ($vars['node']->type == 'event' && arg(2) != 'delete'){
+      $vars['theme_hook_suggestions'][] = 'page__event'; 
+        }
+      }   
+    }
+    if (isset($vars['node'])) {
+      if ($vars['node']->type == 'site_within_a_site'  && arg(2) != 'edit'){
+
+        if ($vars['node']->type == 'site_within_a_site' && arg(2) != 'delete'){
+      $vars['theme_hook_suggestions'][] = 'page__site_within_a_site'; 
+        }
+      }   
+    }
+    if (isset($vars['node'])){
+      if ($vars['node']->type == 'attraction' && arg(2) != 'edit'){
+        if (arg(2) != 'delete'){
+      $vars['theme_hook_suggestions'][] = 'page__attraction'; 
+        }
+      }   
+    }
+
+    if (isset($vars['view'])){
+      if ($vars['view']->type == 'views_view_fields' && arg(2) != 'edit'){
+        if (arg(2) != 'delete'){
+      $vars['theme_hook_suggestions'][] = 'views_view_fields__events'; 
+        }
+      }   
+    }
+}
+/*
+ * Implements hook_theme_registry_alter.  
+ * This hook will be used to reference our custom template pages. 
+ *
+ */
+function pt_misc_theme_registry_alter(&$theme_registry) {
+// Defined path to the current module.
+  $module_path = drupal_get_path('module', 'pt_misc');
+// Find all .tpl.php files in this module's folder recursively.
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+// Iterate through all found template file objects.
+    foreach ($template_file_objects as $key => $template_file_object) {
+// If the template has not already been overridden by a theme.
+      if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])){
+// Alter the theme path and template elements.
+        $theme_registry[$key]['theme path'] = $module_path;
+        $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+        $theme_registry[$key]['type'] = 'module';
+      }
+    }
+}
+
+/**
+ * Implements template_preprocess_block
+ *
+ * enable bean blocks to be themed by bean-type:
+ * i.e. block__bean__BEAN-TYPE.tpl
+ */
+function pt_misc_process_entity(&$vars) {
+  if ($vars['entity_type'] == 'bean') {
+    if ($vars['bean']->type == 'video_gallery') {
+    $vars['theme_hook_suggestions'][] = 'block__bean__video_gallery';
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+    if ($vars['bean']->type == 'social_media_twitter_bean') {
+    $vars['theme_hook_suggestions'][] = 'block__bean__social_media_twitter_bean';
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+    if ($vars['bean']->type == 'social_media_facebook_bean') {
+    $vars['theme_hook_suggestions'][] = 'block__bean__social_media_facebook_bean';
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+    if ($vars['bean']->type == 'social_media_instagram_bean') {
+    $vars['theme_hook_suggestions'][] = 'block__bean__social_media_instagram_bean';
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+     
+    if ($vars['bean']->type == "image_with_text_bean") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__image_with_text_bean";
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+     
+    if ($vars['bean']->type == "image_card_frontpage") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__image_card_frontpage";
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+     
+    if ($vars['bean']->type == "call_to_action_bean") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__call_to_action_bean";
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+     
+    if ($vars['bean']->type == "about_us_bean") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__about_us_bean";
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+     
+    if ($vars['bean']->type == "jumbotron") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__jumbotron";
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+     
+    if ($vars['bean']->type == "jumbotron_button") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__jumbotron_button";
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+    
+    if ($vars['bean']->type == "tertiary_menu_bean") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__tertiary_menu_bean";
+
+    }
+  }
+  if ($vars['entity_type'] == 'bean') {
+    
+    if ($vars['bean']->type == "eatdrink_bean") { 
+    $vars['theme_hook_suggestions'][] = "block__bean__eatdrink_bean";
+
+    }
+  }
+}
+
+function pt_misc_preprocess_field(&$variables) {
+    if($variables['element']['#field_name'] == 'field_bean_gallery_images'){
+        foreach($variables['items'] as $key => $item){
+            $variables['items'][ $key ]['#item']['attributes']['class'][] = 'img-responsive'; 
+        }
+    }
+    if($variables['element']['#field_name'] == 'field_image_bottom'){
+        foreach($variables['items'] as $key => $item){
+            $variables['items'][ $key ]['#item']['attributes']['class'][] = 'img-responsive'; 
+        }
+    }
+}
+ /* Newsletter Subsription Form/Footer */ 
+function pt_misc_block_info(){
+  $blocks['news'] = array(
+    'info' => t('Newsletter Block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+  
+function pt_misc_block_view($delta = '') {
+  // The $delta parameter tells us which block is being requested.
+  $block = array();
+  $block['content'] = drupal_get_form('pt_misc_newsletter_form');
+  return $block;
+}
+
+function pt_misc_newsletter_form($form, &$form_state) {
+  $form['simplenewsletter'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#attributes' =>array('placeholder' => t('ENTER EMAIL FOR NEWSLETTER!')),
+    '#size' => 20,
+    '#maxlength' => 40,
+  ); 
+  /* Subscribe Button and Handler */
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('SUBSCRIBE'),
+  );
+  $form['#submit'][] = 'pt_misc_newsletter_subscription_page_redirect';
+  $form['actions']['submit']['#submit'][] = 'pt_misc_newsletter_subscription_page_redirect';
+  return $form;
+}
+
+function pt_misc_newsletter_subscription_page_redirect($form, &$form_state){
+  $_SESSION['email'] = $form_state['values']['simplenewsletter'];
+  drupal_goto('subscribe');
+  return $form_state;
+}
+
+function pt_misc_form_alter(&$form, &$form_state, $form_id){
+  if (module_exists('simplenews')){
+    // dsm ($form['mail']['#value']);
+    switch($form_id){
+      case 'simplenews_subscriptions_multi_block_form':
+      $form['mail']['#value']= $_SESSION['email'];
+    }
+  }
+}

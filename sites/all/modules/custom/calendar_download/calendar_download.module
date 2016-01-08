@@ -1,0 +1,59 @@
+ <?php
+function calendar_download_menu(){
+  $items['calendar/download/%'] = array(
+  'title' => '',
+  'page callback' => 'calendar_download_ajax',
+  'type' => MENU_CALLBACK,
+  'page arguments' => array(2), // 3 is the menu index
+  'access callback' => TRUE, // allows access to any user
+  );
+  return $items;
+} 
+
+function calendar_download_ajax($id){
+	// get the node from the id
+	$node = node_load($id);
+	$url="http://pikevilletourism.com/node/" .$id;
+	// condition the header type, create the ics
+	header('Content-type: text/calendar; charset=utf-8');
+	$filename='Event-Calendar ' . $id. ".ics";
+	header('Content-Disposition: attachment; filename=' . $filename);
+	$calcontent = calendar_download_get_ics($node->field_event_title['und'][0]['value'],
+		$node->field_event_description['und'][0]['value'], $node->field_event_date['und'][0]['value'], $node->field_event_date['und'][0]['value2'], $node->field_event_location['und'][0]['name'], $node->field_event_location['und'][0]['street'], $node->field_event_location['und'][0]['city'], $url);
+	print($calcontent);
+}
+
+function calendar_download_get_ics($summary, $description, $datestart, $dateend, $addressname, $addressstreet, $addresscity, $uri) {
+
+$address=$addressname . ", " . $addressstreet . ", " . $addresscity;
+
+$dateend=strtotime($dateend);
+$datestart=strtotime($datestart);
+
+$filecontents = "BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTEND:" . dateToCal($dateend) . "
+UID: " . uniqid() . "
+DTSTAMP:" . dateToCal(time()) . "
+LOCATION:" . escapeString($address) . "
+DESCRIPTION:" . escapeString($description) . "
+URL;VALUE=URI: " . escapeString($uri) . "
+SUMMARY:" . escapeString($summary)  . "
+DTSTART:" . dateToCal($datestart) . "
+END:VEVENT
+END:VCALENDAR";
+
+
+return $filecontents;
+}
+
+function dateToCal($timestamp) {
+  return date('Ymd\THis', $timestamp);
+}
+// Escapes a string of characters
+function escapeString($string) {
+  return preg_replace('/([\,;])/','\\\$1', $string);
+}

@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * Implements hook_context_plugins().
+ *
+ */
+function context_cookie_context_plugins() {
+  $plugins = array();
+  $plugins['context_cookie_context_condition_family'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'context_cookie') .'/plugins',
+      'file' => 'context_cookie_context_condition_mycookie.inc',
+      'class' => 'context_cookie_context_condition_family',
+      'parent' => 'context_condition',
+    ),
+  );
+  $plugins['context_cookie_context_condition_adventure'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'context_cookie') .'/plugins',
+      'file' => 'context_cookie_context_condition_mycookie.inc',
+      'class' => 'context_cookie_context_condition_adventure',
+      'parent' => 'context_condition',
+    ),
+  );
+  $plugins['context_cookie_context_condition_eventgoer'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'context_cookie') .'/plugins',
+      'file' => 'context_cookie_context_condition_mycookie.inc',
+      'class' => 'context_cookie_context_condition_eventgoer',
+      'parent' => 'context_condition',
+    ),
+  );
+  $plugins['context_cookie_context_condition_default'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'context_cookie') .'/plugins',
+      'file' => 'context_cookie_context_condition_mycookie.inc',
+      'class' => 'context_cookie_context_condition_default',
+      'parent' => 'context_condition',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry().
+ *
+ */
+function context_cookie_context_registry() {
+  return array(
+    'conditions' => array(
+      'context_cookie_context_condition_family' => array(
+        'title' => t('family'),
+        'description' => t('Set this context based on the value of family cookie.'),
+        'plugin' => 'context_cookie_context_condition_family',
+      ),
+      'context_cookie_context_condition_adventure' => array(
+        'title' => t('adventure'),
+        'description' => t('Set this context based on the value of adventure cookie.'),
+        'plugin' => 'context_cookie_context_condition_adventure',
+      ),
+      'context_cookie_context_condition_eventgoer' => array(
+        'title' => t('eventgoer'),
+        'description' => t('Set this context based on the value of eventgoer cookie.'),
+        'plugin' => 'context_cookie_context_condition_eventgoer',
+      ),
+      'context_cookie_context_condition_default' => array(
+        'title' => t('default'),
+        'description' => t('Set this context based on the value of default cookie.'),
+        'plugin' => 'context_cookie_context_condition_default',
+      ),
+    ),
+  );
+}
+
+// /**
+//  * Implements hook_node_view().
+//  */
+// function context_cookie_node_view($node, $view_mode) {
+//   // Fire our context plugin when viewing nodes.
+//   dsm($node);
+//   dsm($view_mode);
+//   if ($view_mode == 'full') {
+//     if ($plugin = context_get_plugin('condition', 'context_cookie_context_condition_family')) {
+//       $plugin->execute($node);
+//     }
+//   }
+// }
+
+function context_cookie_init() {
+    if(isset($_COOKIE['Drupal_visitor_segmentation'])){
+    if($_COOKIE['Drupal_visitor_segmentation'] == "1") {
+      $plugin = context_get_plugin('condition', 'context_cookie_context_condition_adventure');
+      // dsm ($plugin);
+      if ($plugin) {
+        $plugin->execute();
+      }
+    }
+  }
+  
+  if(isset($_COOKIE['Drupal_visitor_segmentation'])){
+    if($_COOKIE['Drupal_visitor_segmentation'] == "4") {
+      $plugin = context_get_plugin('condition', 'context_cookie_context_condition_family');
+      // dsm ($plugin);
+      if ($plugin) {
+        $plugin->execute();
+      }
+    }
+  }
+
+  if(isset($_COOKIE['Drupal_visitor_segmentation'])){
+    if($_COOKIE['Drupal_visitor_segmentation'] == "3") {
+      $plugin = context_get_plugin('condition', 'context_cookie_context_condition_eventgoer');
+      // dsm ($plugin);
+      if ($plugin) {
+        $plugin->execute();
+      }
+    }
+  }
+  if(isset($_COOKIE['Drupal_visitor_segmentation'])){
+    if($_COOKIE['Drupal_visitor_segmentation'] == "2") {
+      $plugin = context_get_plugin('condition', 'context_cookie_context_condition_default');
+      // dsm ($plugin);
+      if ($plugin) {
+        $plugin->execute();
+      }
+    }
+  }
+}
